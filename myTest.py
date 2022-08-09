@@ -1,11 +1,13 @@
 import jenkins
 import pymysql
+import sys
+sys.path.append('/var/jenkins_home/workspace/Jenkins_stepAfter')
 
 jk = jenkins.Jenkins(url='http://localhost:8080/', username='aqin1012', password='941012')
 # Jenkins的job数量
 print(jk.jobs_count())
-last_build_number = jk.get_job_info('aqin_test_01')['lastBuild']['number']
-result = jk.get_build_console_output(name='aqin_test_01', number=last_build_number)
+last_build_number = jk.get_job_info('Jenkins_test')['lastBuild']['number']
+result = jk.get_build_console_output(name='Jenkins_test', number=last_build_number)
 print(result)
 
 # 数据筛选
@@ -18,7 +20,7 @@ print(user)
 cursor = db.cursor()
 sql = "SELECT * FROM driver"
 insert_sql = "INSERT INTO driver(uid,name,gender,phone,email,passwd,gmt_modify,gmt_create,delete_flag) " \
-             "VALUES('" + user + "','aqin-driver','male','88888888','aqin@qq.com','password','2022-03-18 11:03:41','2022-03-18 11:03:41',0)"
+             "VALUES('" + user + "','aqin999-driver','male','88888888','aqin@qq.com','password','2022-03-18 11:03:41','2022-03-18 11:03:41',0)"
 try:
     execute = cursor.execute(insert_sql)
     print(execute)
