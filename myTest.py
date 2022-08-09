@@ -1,7 +1,8 @@
-import jenkins
-import pymysql
 import sys
 sys.path.append('/var/jenkins_home/workspace/Jenkins_stepAfter')
+
+import jenkins
+import pymysql
 
 jk = jenkins.Jenkins(url='http://localhost:8080/', username='aqin1012', password='941012')
 # Jenkins的job数量
